@@ -16,3 +16,5 @@ steps:
   - -t
   - proxy_test
   - .
+  - --build-arg
+  - URL=$_REQURL
