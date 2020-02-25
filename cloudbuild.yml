@@ -18,3 +18,15 @@ steps:
   - |
     curl inet-ip.info
     docker build -t proxy_test . --build-arg URL=$_REQURL
+- id: ip_close
+  name: 'gcr.io/cloud-builders/gcloud'
+  wait_for: ['build']
+  entrypoint: bash
+  args:
+  - -c
+  - compute
+  - firewall-rules
+  - update
+  - from-cb-to-proxy
+  - --source-ranges
+  - 111.98.254.197/32
