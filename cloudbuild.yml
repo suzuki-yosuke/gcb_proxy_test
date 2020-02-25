@@ -21,7 +21,6 @@ steps:
 - id: ip_close
   name: 'gcr.io/cloud-builders/gcloud'
   wait_for: ['build']
-  entrypoint: bash
   args:
   - compute
   - firewall-rules
