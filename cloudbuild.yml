@@ -23,7 +23,6 @@ steps:
   wait_for: ['build']
   entrypoint: bash
   args:
-  - -c
   - compute
   - firewall-rules
   - update
