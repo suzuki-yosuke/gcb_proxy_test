@@ -1,0 +1,9 @@
+## Build
+steps:
+- id: build
+  name: 'gcr.io/cloud-builders/docker'
+  args:
+  - build
+  - -t
+  - proxy_test
+  - .
