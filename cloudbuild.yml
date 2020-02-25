@@ -7,14 +7,14 @@ steps:
   - -c
   - |
     BUILDER_IP=$(curl inet-ip.info)
+    echo $${BUILDER_IP}
     gcloud compute firewall-rules update from-cb-to-proxy --source-ranges $${BUILDER_IP}
 - id: build
   name: 'gcr.io/cloud-builders/docker'
   wait_for: ['ip_open']
+  entrypoint: bash
   args:
-  - build
-  - -t
-  - proxy_test
-  - .
-  - --build-arg
-  - URL=$_REQURL
+  - -c
+  - |
+    curl inet-ip.info
+    docker build -t proxy_test . --build-arg URL=$_REQURL
