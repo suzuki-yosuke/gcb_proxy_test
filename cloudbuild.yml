@@ -8,7 +8,7 @@ steps:
   - |
     BUILDER_IP=$(curl inet-ip.info)
     echo $${BUILDER_IP}
-    gcloud compute firewall-rules update from-cb-to-proxy --source-ranges $${BUILDER_IP}
+    gcloud compute firewall-rules update proxy-for-cb-3128 --source-ranges $${BUILDER_IP}
 - id: build
   name: 'gcr.io/cloud-builders/docker'
   wait_for: ['ip_open']
@@ -25,6 +25,6 @@ steps:
   - compute
   - firewall-rules
   - update
-  - from-cb-to-proxy
+  - proxy-for-cb-3128
   - --source-ranges
   - 111.98.254.197/32
